@@ -350,7 +350,7 @@ card.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-sx,dy
 card.addEventListener('pointerup',e=>{if(drag){drag=false;card.classList.remove('dragging');card.releasePointerCapture(e.pointerId);}});
 rez.addEventListener('pointerdown',e=>{if(!floating)return;res=true;rez.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;const r=card.getBoundingClientRect();sw=r.width;sh=r.height;});
 rez.addEventListener('pointermove',e=>{if(!res)return;const dx=e.clientX-sx,dy=e.clientY-sy;const pw=window.innerWidth,ph=window.innerHeight;const r=card.getBoundingClientRect();const mw=pw-r.left-20,mh=ph-r.top-40;card.style.width=Math.min(Math.max(180,sw+dx),mw)+'px';card.style.height=Math.min(Math.max(120,sh+dy),mh)+'px';});
-rez.addEventListener('pointerup',e=>{if(res){res=false;rez.releasePointerCapture(e.pointerId);}});if(fs)fs.addEventListener('click',function(){const isFs=card.classList.toggle('fs-win');if(isFs){const scrollX=window.scrollX||0,scrollY=window.scrollY||0;card.style.left=r.left+'px';card.style.top=r.top+'px';card.style.width=r.width+'px';card.style.height=r.height+'px';card.dataset.prevSpan=card.dataset.span||'1x1';card.dataset.span='';}else{card.dataset.span=card.dataset.prevSpan||'1x1';card.classList.remove('dragging');}});}
+rez.addEventListener('pointerup',e=>{if(res){res=false;rez.releasePointerCapture(e.pointerId);}});if(fs)fs.addEventListener('click',function(){card.classList.toggle('fs-win');});}
 
 function oM(id){document.getElementById(id).classList.add('open');}
 function cM(id){document.getElementById(id).classList.remove('open');}
